@@ -58,14 +58,16 @@ def single_node_scheduler(workers):
     flag_string = ' --experiment_config_path={}/{}.subexp --save_dir={} --summary_path={}/{}.summary'.format(
         args.search_summary_dir, worker, args.save_dir, args.search_summary_dir, worker
     )
-    shell_cmd = "python scripts/worker.py {}".format(flag_string)
+    shell_cmd = "python3 scripts/worker.py {}".format(flag_string) #UPDATED because of Python error
     jobscript = "{}/{}.sh".format(args.search_summary_dir, worker)
     with open(jobscript, 'w') as f:
         f.write(shell_cmd)
     print("Launching a single-node dispatcher for worker: {}".format(worker))
     st = os.stat(jobscript)
     os.chmod(jobscript, st.st_mode | stat.S_IEXEC)
-    subprocess.call(jobscript, shell=True)
+    # trying to debug:
+    result = subprocess.run(jobscript, shell=True)
+    print(result.returncode)
 
 
 @RegisterScheduler("gcp_scheduler")
@@ -90,7 +92,7 @@ def gcp_worker(args, worker_id, machine):
     os.system("scp {} byuan@{}:~/{}".format(config_path, machine, config_path))
     os.system("ssh {} '{}'".format(machine, 'cd ~; git checkout add_code_to_index_map; git pull;'))
 
-    cmd = ['/opt/conda/bin/python', 'scripts/worker.py',
+    cmd = ['opt/bin/python3', 'scripts/worker.py', # Modification here too
            '--experiment-config-path={}'.format(config_path),
            '--save-dir={}'.format(args.save_dir),
            '--summary_path={}/{}.summary'.format(args.search_summary_dir, worker_id)]
@@ -129,7 +131,7 @@ def generate_config_sublist(experiment_config_json):
     config_sublists = [[] for _ in range(args.n_workers)]
     for k, job in enumerate(job_list):
         config_sublists[k % args.n_workers].append(job)
-    workers = [parsing.md5(''.join(sublist)) for sublist in config_sublists]
+    workers = [parsing.md5(''.join(sublist)) for sublist in config_sublists] # md5 string key
 
     return job_list, config_sublists, workers
 
