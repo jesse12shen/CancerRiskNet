@@ -1,4 +1,5 @@
 import json
+import os.path
 file_w = {
   "search_space": {
     "metadata":["data/sample_diag_data.json"],
@@ -6,7 +7,7 @@ file_w = {
     "dev":[True],
     "test":[False],
     "epochs":[2],
-    "num_workers":[8],
+    "num_workers":[4],
     "cuda":[True],
     "hidden_dim":[256],
     "model_name": ["transformer"],
@@ -27,9 +28,11 @@ file_w = {
     "use_known_risk_factors": [True, False],
     "data_setting_path": ["data/settings_sample_data.yaml"]
   },
-  "available_gpus": [1]
+  "available_gpus": [0]
 }
-file_path = 'transformer_only.json'
+file_path = 'configs\\transformer_only_cpu.json'
+# if not os.path.exists(file_path):
+#   file_path =
 with open(file_path, 'w') as json_file:
     json.dump(file_w,json_file)
 
