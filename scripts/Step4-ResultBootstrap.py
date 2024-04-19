@@ -158,7 +158,8 @@ if __name__ == "__main__":
     for i, (exp_id, save_dir, model_name, exclusion_interval) in enumerate(zip(best_exp_ids_config['exp_id'], best_exp_ids_config['save_dir'], best_exp_ids_config['model_name'], best_exp_ids_config['exclusion_interval'])):
         printing_prefix = "[Step5-ResultsBootstrap][{}/{}][{}]".format(i+1, len(best_exp_ids_config['exp_id']), exp_id)
         results_path = os.path.join(save_dir, "{}.results".format(exp_id))
-        test_preds_path = os.path.join(save_dir, "{}.results.test_preds".format(exp_id))
+        # test_preds_path = os.path.join(save_dir, "{}.results.test_preds".format(exp_id))
+        test_preds_path = os.path.join(save_dir, "{}.results.dev_preds".format(exp_id)) # for validation only test
         if (not os.path.exists(results_path)) or (not os.path.exists(test_preds_path)):
             print(printing_prefix, "[WARNING] File not found for {} at {} ! "
                                    "Consider not to skip step 4.".format(exp_id, test_preds_path))
