@@ -50,7 +50,7 @@ def RegisterScheduler(scheduler_name):
         return f
     return decorator
 
-
+# Not to be confused with the other argument?
 @RegisterScheduler("single_node_scheduler")
 def single_node_scheduler(workers):
     assert len(workers) == 1 and args.n_workers == 1, "n_workers does not equal to one. Cannot use single node worker."
@@ -67,7 +67,7 @@ def single_node_scheduler(workers):
     os.chmod(jobscript, st.st_mode | stat.S_IEXEC)
     # trying to debug:
     result = subprocess.run(jobscript, shell=True)
-    print(result.returncode)
+    # print(result.returncode)
 
 
 @RegisterScheduler("gcp_scheduler")
@@ -149,7 +149,9 @@ if __name__ == "__main__":
     experiment_config = json.load(open(args.experiment_config_path, 'r'))
 
     job_list, config_sublists, worker_ids = generate_config_sublist(experiment_config_json=experiment_config)
-    print("Schduling {} dispatchers for {} jobs!".format(len(config_sublists), len(job_list)))
+    # list of settings generated
+    print("Scheduling {} dispatchers for {} jobs!".format(len(
+        config_sublists), len(job_list))) # typo
     [print('Sublist {} : {} jobs.'.format(worker_ids[i], len(sublist))) for i, sublist in enumerate(config_sublists)]
 
     datestr = datetime.now().strftime("%Y%m%d-%H%M")

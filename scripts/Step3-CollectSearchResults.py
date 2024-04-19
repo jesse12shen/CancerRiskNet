@@ -245,7 +245,7 @@ def print_grid_performances(summary_df, args_df_subset):
 if __name__ == "__main__":
 
     print("[Step3-CollectSearchResults][1/3]Start to collect grid exprs...")
-
+    # note that args.parse() is at the top
     assert os.path.exists(args.experiment_config_path)
     experiment_config_json = json.load(open(args.experiment_config_path, 'r'))
     job_list = parsing.parse_dispatcher_config(experiment_config_json)
@@ -273,7 +273,11 @@ if __name__ == "__main__":
         for job in job_ids:
             result_path = os.path.join(args.result_dir, job + '.results')
             log_path = os.path.join(args.result_dir, job + '.txt')
-            summary, job_args = update_summary_with_results(result_path, log_path, summary, summary_path)
+            summary, job_args = update_summary_with_results(result_path,
+                                                            log_path,
+                                                            summary,
+                                                            summary_path) #
+            # note the recursive call
             if not job_args:
                 continue
             sorted_key_args = sorted(job_args.keys())
