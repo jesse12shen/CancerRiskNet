@@ -28,11 +28,9 @@ file_w = {
     "use_known_risk_factors": [True, False],
     "data_setting_path": ["data/settings_sample_data.yaml"]
   },
-  "available_gpus": [0]
+  "available_gpus": [1]
 }
-file_path = 'configs\\transformer_only_cpu.json'
-# if not os.path.exists(file_path):
-#   file_path =
+file_path = '/home/jubal/CancerRiskNet/configs/transformer_only_shortened_search2.json'
 with open(file_path, 'w') as json_file:
     json.dump(file_w,json_file)
 
