@@ -102,7 +102,9 @@ def child_initialize(_probs_for_eval, _golds_for_eval):
 
 
 def get_performance_ci(probs_for_eval, golds_for_eval, model_name, prediction_interval, exclusion_interval, exp_id, n_boot=2):
-
+    '''
+    eval does happen here (partly)
+    '''
     with get_context("spawn").Pool(min(200, n_boot), initializer=child_initialize, initargs=(probs_for_eval, golds_for_eval)) as pool:
         metrics = pool.map(get_boot_metric_clf, range(n_boot))
     # metrics = [get_boot_metric(n) for n in tqdm(range(n_boot))]
@@ -121,6 +123,15 @@ def get_performance_ci(probs_for_eval, golds_for_eval, model_name, prediction_in
 
 
 def get_slice(df, model_name=None, metric_name=None, prediction_interval=None, exclusion_interval=None):
+    '''
+    prints results?
+    :param df:
+    :param model_name:
+    :param metric_name:
+    :param prediction_interval:
+    :param exclusion_interval:
+    :return:
+    '''
     if model_name is not None:
         df = df.loc[df.Model == model_name]
     if metric_name is not None:
@@ -155,6 +166,8 @@ if __name__ == "__main__":
     prefix = '{}_TableS4'.format(args.filename)
     
     metrics_records = []
+    # likely takes a long time just because cpu loading, i.e. no gpu
+    # computation happens here?
     for i, (exp_id, save_dir, model_name, exclusion_interval) in enumerate(zip(best_exp_ids_config['exp_id'], best_exp_ids_config['save_dir'], best_exp_ids_config['model_name'], best_exp_ids_config['exclusion_interval'])):
         printing_prefix = "[Step5-ResultsBootstrap][{}/{}][{}]".format(i+1, len(best_exp_ids_config['exp_id']), exp_id)
         results_path = os.path.join(save_dir, "{}.results".format(exp_id))
