@@ -1,0 +1,1 @@
+python3 scripts/Step1-CheckFiles.py --experiment_config_path configs/transformer_only_shortened_search1.json

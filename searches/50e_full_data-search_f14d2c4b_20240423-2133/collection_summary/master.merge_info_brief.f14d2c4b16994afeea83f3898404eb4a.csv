@@ -1,0 +1,3 @@
+,current_epoch,epoch_stats,exclusion_interval,exp_id,lr,optimizer_state,results_path,resume_from_result
+89184ccda52b2d0c8d38d0c44b8a12f9,,,0,89184ccda52b2d0c8d38d0c44b8a12f9,1.5625e-06,,results/untitled-search_f14d2c4b_20240423-2133/89184ccda52b2d0c8d38d0c44b8a12f9.results,
+11093a908dee5febea35fcad4f903219,,,3,11093a908dee5febea35fcad4f903219,1.953125e-07,,results/untitled-search_f14d2c4b_20240423-2133/11093a908dee5febea35fcad4f903219.results,
