@@ -1,4 +1,4 @@
-# Origina README: Pancreatic cancer risk predicted from disease trajectories using deep learning
+# Original README: Pancreatic cancer risk predicted from disease trajectories using deep learning
 
 ## Introduction
 The repository contains the code implementation used for the paper [A deep learning algorithm to predict risk of pancreatic cancer from disease trajectories](https://www.nature.com/articles/s41591-023-02332-5).
