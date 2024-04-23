@@ -1,0 +1,27 @@
+
+########################################  Hyperparameter summary  ########################################
+
+Empty DataFrame
+Columns: []
+Index: [e1c65a068164f19b1d658fb376766a43, 01ba78cb69862fcd8c2108e6ae163864, 64d1be793d1ae65cb8f8ed46dd32663e, 7b681646a1ae4b28475ba3ccb34b2168]
+########################################  C-Index (all 3 datasets)  ########################################
+
+                                  epoch_train_c_index  epoch_dev_c_index  dev_c_index
+e1c65a068164f19b1d658fb376766a43             0.334862           0.604820     0.430145
+01ba78cb69862fcd8c2108e6ae163864             0.449735           0.632117     0.530851
+64d1be793d1ae65cb8f8ed46dd32663e             0.494898           0.550340     0.641115
+7b681646a1ae4b28475ba3ccb34b2168             0.681818           0.566809     0.634531
+########################################  AUROC - (Dev) Full eval  ########################################
+
+                                  dev_3month_auroc  dev_6month_auroc  dev_12month_auroc  dev_36month_auroc  dev_60month_auroc  dev_120month_auroc
+e1c65a068164f19b1d658fb376766a43               NaN          0.233526           0.175363           0.454694           0.469256            0.360210
+01ba78cb69862fcd8c2108e6ae163864               NaN               NaN                NaN           0.543572           0.510859            0.538095
+64d1be793d1ae65cb8f8ed46dd32663e               NaN          0.731481           0.591748           0.601714           0.586853            0.691928
+7b681646a1ae4b28475ba3ccb34b2168               NaN               NaN                NaN           0.638242           0.646554            0.680556
+########################################  AUPRC - (Dev) Full eval  ########################################
+
+                                  dev_3month_auprc  dev_6month_auprc  dev_12month_auprc  dev_36month_auprc  dev_60month_auprc  dev_120month_auprc
+e1c65a068164f19b1d658fb376766a43               NaN          0.022633           0.038367           0.421555           0.511123            0.606409
+01ba78cb69862fcd8c2108e6ae163864               NaN               NaN                NaN           0.393738           0.429733            0.689762
+64d1be793d1ae65cb8f8ed46dd32663e               NaN          0.155669           0.382960           0.492930           0.514501            0.687247
+7b681646a1ae4b28475ba3ccb34b2168               NaN               NaN                NaN           0.436011           0.526929            0.700850

@@ -1,0 +1,1 @@
+/usr/bin/env python3 scripts/worker.py  --experiment_config_path=searches/untitled-search_9fb125cd_20240423-2022/9fb125cd2e754415c0eda176d7f59dea.subexp --save_dir=results/untitled-search_9fb125cd_20240423-2022 --summary_path=searches/untitled-search_9fb125cd_20240423-2022/9fb125cd2e754415c0eda176d7f59dea.summary

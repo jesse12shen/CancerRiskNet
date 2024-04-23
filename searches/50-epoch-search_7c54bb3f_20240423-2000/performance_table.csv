@@ -1,0 +1,3 @@
+exclusion_interval,model_name,exp_id,save_dir
+0,transformer,4faf8939802fa1a94821e9cf49393ea5,results/untitled-search_7c54bb3f_20240423-2000
+3,transformer,7f23735010dcfacd9714887cf574109c,results/untitled-search_7c54bb3f_20240423-2000

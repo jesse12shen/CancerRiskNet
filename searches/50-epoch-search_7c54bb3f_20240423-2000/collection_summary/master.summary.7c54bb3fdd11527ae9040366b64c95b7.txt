@@ -1,0 +1,21 @@
+
+########################################  Hyperparameter summary  ########################################
+
+Empty DataFrame
+Columns: []
+Index: [4faf8939802fa1a94821e9cf49393ea5, 7f23735010dcfacd9714887cf574109c]
+########################################  C-Index (all 3 datasets)  ########################################
+
+Empty DataFrame
+Columns: []
+Index: [4faf8939802fa1a94821e9cf49393ea5, 7f23735010dcfacd9714887cf574109c]
+########################################  AUROC - (Dev) Full eval  ########################################
+
+                                  dev_3month_auroc  dev_6month_auroc  dev_12month_auroc  dev_36month_auroc  dev_60month_auroc  dev_120month_auroc
+4faf8939802fa1a94821e9cf49393ea5          0.221857          0.317818           0.257898           0.359209           0.324143            0.273913
+7f23735010dcfacd9714887cf574109c               NaN          0.506005           0.446828           0.570955           0.542661            0.640488
+########################################  AUPRC - (Dev) Full eval  ########################################
+
+                                  dev_3month_auprc  dev_6month_auprc  dev_12month_auprc  dev_36month_auprc  dev_60month_auprc  dev_120month_auprc
+4faf8939802fa1a94821e9cf49393ea5          0.043153          0.063124           0.101422           0.299832           0.344361            0.575215
+7f23735010dcfacd9714887cf574109c               NaN          0.067662           0.116657           0.262121           0.388014            0.642556

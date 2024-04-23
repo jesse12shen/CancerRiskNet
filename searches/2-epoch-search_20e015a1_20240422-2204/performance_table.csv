@@ -1,0 +1,5 @@
+exclusion_interval,model_name,exp_id,save_dir
+3,transformer,64d1be793d1ae65cb8f8ed46dd32663e,results/untitled-search_20e015a1_20240422-2204
+3,transformer known risk,e1c65a068164f19b1d658fb376766a43,results/untitled-search_20e015a1_20240422-2204
+12,transformer,7b681646a1ae4b28475ba3ccb34b2168,results/untitled-search_20e015a1_20240422-2204
+12,transformer known risk,01ba78cb69862fcd8c2108e6ae163864,results/untitled-search_20e015a1_20240422-2204
