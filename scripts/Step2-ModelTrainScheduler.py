@@ -21,7 +21,7 @@ RESULTS_PATH_APPEAR_ERR = 'ALERT! Existing results for the same config(s).'
 SUCESSFUL_SEARCH_STR = "Finished! All worker experiments scheduled!"
 NO_SCHEDULER_FOUND = "No scheduler found in registry with name {}. Chose between {}"
 COMMAND_TO_COLLECT_SEARCH = "\nGrid search finished successfully. \nRun the following commmand to collect" \
-                            " the grid:\n`python -u scripts/Step3-CollectSearchResults.py " \
+                            " the grid:\n`python3 -u scripts/Step3-CollectSearchResults.py " \
                             "--experiment_config_path {} --search_dir {} --result_dir {}`."
 SCHEDULER_REGISTRY = {}
 
@@ -58,7 +58,7 @@ def single_node_scheduler(workers):
     flag_string = ' --experiment_config_path={}/{}.subexp --save_dir={} --summary_path={}/{}.summary'.format(
         args.search_summary_dir, worker, args.save_dir, args.search_summary_dir, worker
     )
-    shell_cmd = "python3 scripts/worker.py {}".format(flag_string) #UPDATED because of Python error
+    shell_cmd = "/usr/bin/env python3 scripts/worker.py {}".format(flag_string) #UPDATED because of Python error
     jobscript = "{}/{}.sh".format(args.search_summary_dir, worker)
     with open(jobscript, 'w') as f:
         f.write(shell_cmd)
@@ -66,7 +66,7 @@ def single_node_scheduler(workers):
     st = os.stat(jobscript)
     os.chmod(jobscript, st.st_mode | stat.S_IEXEC)
     # trying to debug:
-    result = subprocess.run(jobscript, shell=True)
+    result = subprocess.run(jobscript, shell=True) # is in fact the searches shell script
     # print(result.returncode)
 
 
@@ -110,7 +110,7 @@ def torque_scheduler(workers):
 
         shell_cmd = ["#!/bin/bash", "#PBS -l nodes=1:ppn=20:gpus=1", "#PBS -l mem=400gb",
                      "#PBS -l walltime=20:00:00:00", "#PBS -N cancerrisknet", "#PBS -e {}/.$PBS_JOBID.err",
-                     "#PBS -o {}/.$PBS_JOBID.out", "python scripts/schedulers/dispatcher.py {}"]
+                     "#PBS -o {}/.$PBS_JOBID.out", "python3 scripts/schedulers/dispatcher.py {}"]
 
         shell_cmd = '\n'.join(shell_cmd).format(args.search_summary_dir, args.search_summary_dir, flag_string)
         jobscript = "{}/{}.moab.sh".format(args.search_summary_dir, worker)

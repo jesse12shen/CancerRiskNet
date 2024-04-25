@@ -12,6 +12,9 @@ sys.path.insert(0, dirname(dirname(realpath(__file__))))
 import cancerrisknet.utils.parsing as parsing
 import cancerrisknet.models.factory as model_factory
 import cancerrisknet.learn.state_keeper as state
+'''
+worker.py runs scripts/main.py
+'''
 
 CONFIG_NOT_FOUND_MSG = "ERROR! {}: {} config file not found."
 SUCESSFUL_SEARCH_STR = "Finished! Sub experiment search results dumped to {}."
@@ -43,7 +46,7 @@ def launch_experiment(gpu, flag_string):
     log_stem = os.path.join(args.save_dir, exp_id)
     log_path = '{}.txt'.format(log_stem)
     results_path = "{}.results".format(log_stem)
-    experiment_string = "CUDA_VISIBLE_DEVICES={} python -u scripts/main.py {} --save_dir='{}' --exp_id {}".format(
+    experiment_string = "CUDA_VISIBLE_DEVICES={} /usr/bin/env python3 -u scripts/main.py {} --save_dir='{}' --exp_id {}".format(
         gpu, flag_string, args.save_dir, exp_id)
 
     shell_cmd = "{} > {} 2>&1".format(experiment_string, log_path)
@@ -162,5 +165,6 @@ if __name__ == "__main__":
         update_summary_with_results(args.results_path, args.log_path, result_keys)
         dump_result_string = SUCESSFUL_SEARCH_STR.format(args.results_path)
         print("({}/{}) \t {}".format(i+1, len(job_list), dump_result_string))
-
+    # print('work complete')
     sys.exit(0)
+    
