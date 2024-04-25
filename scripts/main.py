@@ -12,7 +12,7 @@ import cancerrisknet.learn.attribute as attribute
 from cancerrisknet.utils.parsing import parse_args
 from cancerrisknet.utils.time_logger import TimeLogger
 import torch
-
+# this script does in fact contain model data
 if __name__ == '__main__':
 
     args = parse_args()
